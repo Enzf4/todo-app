@@ -1,0 +1,65 @@
+textarea:focus, input:focus{
+    outline: none;
+}
+
+body {
+    color: #4d4d4d;
+    background-color: #f5f5f5;
+    color: #4d4d4d;
+}
+
+.main {
+    max-width: 500px;
+    width: 85%;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+    background-color: #0a0a0a;
+    border: 1px solid aliceblue;
+}
+
+@media screen and (min-width: 600px) {
+    .main {
+        width: 70%;
+    }
+}
+
+label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    padding-bottom: 1rem;
+}
+
+.lg-text-input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid aliceblue;
+    color: aliceblue;
+    background-color: #0a0a0a;
+    display: block;
+    box-sizing: border-box;
+    font-size: 2rem;
+}
+
+.btn-wrapper {
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.btn-menu {
+    flex-basis: 32%;
+    cursor: pointer;
+}
+
+.active {
+    color: green;
+}
+
+ul {
+    padding-inline-start: 0;
+}
+
+ul li {
+    list-style: none;
+}

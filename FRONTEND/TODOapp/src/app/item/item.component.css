@@ -1,0 +1,138 @@
+.item {
+    padding: .5rem 0 .75rem 0;
+    text-align: left;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+.btn-wrapper {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.btn {
+    /* menu buttons flexbox styles */
+    flex-basis: 49%;
+    font-weight: bold;
+    padding: 0.6rem 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-save {
+    background-color: #0a0a0a;
+    color: aliceblue;
+    border-color: #00b90a;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    border-color: #0a0a0a;
+}
+
+.btn-edit {
+    background-color: #0a0a0a;
+    color: aliceblue;
+    border-color: aliceblue;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.btn-edit:hover {
+    border-color: #0a0a0a;
+}
+
+.checkbox-wrapper {
+    margin: .5rem 0;
+}
+
+.btn-cancel {
+    background-color: #0a0a0a;
+    color: aliceblue;
+    border-color: #9a0000;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    border-color: #0a0a0a;
+}
+
+.btn-warn {
+    background-color: #0a0a0a;
+    color: #fff;
+    border-color: #9a0000;
+    cursor: pointer;
+}
+
+.btn-warn:hover {
+    border-color: #0a0a0a;
+}
+
+.btn-warn:active {
+    background-color: #0a0a0a;
+}
+
+.sm-text-input {
+    width: 100%;
+    padding: .5rem;
+    border: 1px solid aliceblue;
+    color: aliceblue;
+    display: block;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    background-color: #0a0a0a;
+}
+
+.checkbox-wrapper {
+    margin: .5rem 0;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="checkbox"]:not(:checked)+label,
+[type="checkbox"]:checked+label {
+    position: relative;
+    padding-left: 1.95em;
+    cursor: pointer;
+}
+
+[type="checkbox"]:not(:checked)+label:before,
+[type="checkbox"]:checked+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.25em;
+    height: 1.25em;
+    border: 1px solid aliceblue;
+    background: #0a0a0a;
+}
+
+[type="checkbox"]:not(:checked)+label:after,
+[type="checkbox"]:checked+label:after {
+    content: '\2605';
+    position: absolute;
+    top: .15em;
+    left: .22em;
+    font-size: 1.3em;
+    line-height: 0.8;
+    color: aliceblue;
+    border-radius: 3px;
+}
+
+[type="checkbox"]:not(:checked)+label:after {
+    opacity: 0;
+    transform: scale(0);
+}
+
+[type="checkbox"]:checked+label:after {
+    opacity: 1;
+    transform: scale(1);
+}
