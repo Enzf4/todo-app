@@ -4,9 +4,72 @@
     font-family: "DotGothic16", sans-serif;
 }
 
+::-webkit-scrollbar{
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: aliceblue;
+}
+
+
 body {
     background-color: #0a0a0a;
     color: aliceblue;
+}
+
+audio {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    display: block;
+    background-color: #0a0a0a;
+    border: 2px solid aliceblue;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: transparent;
+    color: transparent;
+    background-color: #0a0a0a;
+}
+
+audio::-webkit-media-controls-play-button{
+    color: aliceblue;
+    background-color: #0a0a0a;
+    
+}
+audio::-webkit-media-controls-mute-button{
+    color: aliceblue;
+}
+audio::-webkit-media-controls-volume-slider{
+    background-color: #0a0a0a;
+}
+audio::-webkit-media-controls-timeline {
+    background-color: #0a0a0a;
+    color: aliceblue;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-seek-back-button,
+audio::-webkit-media-controls-seek-forward-button,
+audio::-webkit-media-controls-fullscreen-button,
+audio::-webkit-media-controls-rewind-button,
+audio::-webkit-media-controls-return-to-realtime-button,
+audio::-webkit-media-controls-toggle-closed-captions-button {
+    color: aliceblue;
+    background-color: #0a0a0a;
+}
+
+audio::-webkit-media-controls-volume-slider-container,
+audio::-webkit-media-controls-timeline-container {
+    background-color: #0a0a0a;
 }
 
 .btn-wrapper {
@@ -24,6 +87,31 @@ body {
     padding: .35rem 1rem .25rem 1rem;
     font-size: 1rem;
     cursor: pointer;
+}
+
+#made{
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+#title{
+    font-size: 4.5rem;
+    font-weight: lighter;
+    margin: -0.5rem;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+#hello{
+    font-size: 2rem;
+    font-weight: lighter;
+    text-align: left;
+}
+
+#frase{
+    font-size: 1.2rem;
+    font-weight: lighter;
+    text-align: left;
 }
 
 .btn:hover {
@@ -47,16 +135,33 @@ body {
     padding: .75rem;
     font-size: 1.3rem;
     margin: 1rem 0;
-    font-weight: bold;
+    font-weight: 100;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: none;
 }
 
-.btn-primary:hover {
-    border-color: #0a0a0a;
-}
+@keyframes borderAlt {
+    0% {
+      border-color: #0a0a0a;
+    }
+    50% {
+      border-color: aliceblue;
+    }
+    100% {
+      border-color: #0a0a0a;
+    }
+  }
+  
+  .btn-primary {
+    transition: none;
+  }
+  
+  .btn-primary:hover {
+    animation: borderAlt 1.5s steps(1) infinite;
+  }
 
 .btn-primary:active {
     border: 1px solid aliceblue;

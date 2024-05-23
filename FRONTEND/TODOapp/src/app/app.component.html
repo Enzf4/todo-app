@@ -1,13 +1,36 @@
 <div class="main">
-  <h1>Task List</h1>
-  <input class="lg-text-input" (keydown.enter)="CREATE_tarefa(campoNovoItem.value)"
-    (keydown.enter)="campoNovoItem.value = ''" #campoNovoItem />
-  <button class="btn-primary" (click)="CREATE_tarefa(campoNovoItem.value)" (click)="campoNovoItem.value = ''">
-    Add Task</button>
-  <ul>
-    <li *ngFor="let tarefaDoLoop of arrayDeTarefas">
-      <app-item [tarefa]="tarefaDoLoop" (removeTarefa)="DELETE_tarefa(tarefaDoLoop)"
-        (modificaTarefa)="UPDATE_tarefa(tarefaDoLoop)"></app-item>
-    </li>
-  </ul>
+  <div *ngIf="usuarioLogado">
+    <h1 id="title">task_list</h1>
+    <h1 id="hello">hello, {{ nomeUsuario }}</h1>
+    <br>
+    <h1 id="frase">"The future depends on what you do today."</h1>
+    <br>
+    <br>
+    <input placeholder="task" class="lg-text-input" (keydown.enter)="CREATE_tarefa(campoNovoItem.value)"
+      (keydown.enter)="campoNovoItem.value = ''" #campoNovoItem />
+    <button class="btn-primary" (click)="CREATE_tarefa(campoNovoItem.value)" (click)="campoNovoItem.value = ''">
+      Add Task</button>
+    <ul>
+      <li *ngFor="let tarefaDoLoop of arrayDeTarefas">
+        <app-item [tarefa]="tarefaDoLoop" (removeTarefa)="DELETE_tarefa(tarefaDoLoop)"
+          (modificaTarefa)="UPDATE_tarefa(tarefaDoLoop)"></app-item>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="!usuarioLogado">
+    <br>
+    <img src="../assets/giphy.gif" width="100%" alt="">
+    <br>
+    <br>
+    <input #username placeholder="who are you?" class="lg-text-input" />
+    <BR>
+    <input #password placeholder="tell me your secret" class="lg-text-input" />
+    <button class="btn-primary" (click)="login(username.value, password.value)">-></button>
+  </div>
+  <h1 id="made">song: antent - hope to see you again</h1>
+  <h1 id="made">made by /Enzf4</h1>
+  <audio autoplay loop [volume]="0.3">
+    <source src="../assets/antent - hope to see you again - dreamscape.mp3" type="audio/mpeg">
+</audio>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarefa } from "./tarefa";
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,12 @@ export class AppComponent implements OnInit {
   title = 'TODOapp';
   arrayDeTarefas: Tarefa[] = [];
   apiURL: string;
+  usuarioLogado = false;
+  tokenJWT = '{ "token":""}';
+  nomeUsuario: string = ''; // Variável para armazenar o nome do usuário
 
   constructor(private http: HttpClient) {
-    this.apiURL = 'https://married-clerissa-enzocodes.koyeb.app';
+    this.apiURL = 'http://localhost:3000'; // Coloque sua URL de API aqui
   }
 
   ngOnInit() {
@@ -26,22 +30,18 @@ export class AppComponent implements OnInit {
   }
 
   READ_tarefas() {
-    this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`).subscribe(
-      resultado => {
-        this.arrayDeTarefas = resultado;
-        localStorage.setItem('tasks', JSON.stringify(this.arrayDeTarefas));
-        console.log('Fetched tasks:', this.arrayDeTarefas);
-      },
-      error => {
-        console.error('Error fetching tasks:', error);
-      }
+    const idToken = new HttpHeaders().set("id-token", JSON.parse(this.tokenJWT).token);
+    this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`, { 'headers': idToken }).subscribe(
+      (resultado) => { this.arrayDeTarefas = resultado; this.usuarioLogado = true },
+      (error) => { this.usuarioLogado = false }
     );
   }
 
   CREATE_tarefa(descricaoNovaTarefa: string) {
-    var novaTarefa = new Tarefa(descricaoNovaTarefa, false);
-    this.http.post<Tarefa>(`${this.apiURL}/api/post`, novaTarefa).subscribe(
-      resultado => {
+    const novaTarefa = new Tarefa(descricaoNovaTarefa, false);
+    const idToken = new HttpHeaders().set("id-token", JSON.parse(this.tokenJWT).token);
+    this.http.post<Tarefa>(`${this.apiURL}/api/post`, novaTarefa, { headers: idToken }).subscribe(
+      (resultado) => {
         console.log(resultado);
         this.READ_tarefas();
         localStorage.setItem('tasks', JSON.stringify(this.arrayDeTarefas));
@@ -50,10 +50,11 @@ export class AppComponent implements OnInit {
   }
 
   DELETE_tarefa(tarefaAserRemovida: Tarefa) {
-    var indice = this.arrayDeTarefas.indexOf(tarefaAserRemovida);
-    var id = this.arrayDeTarefas[indice]._id;
-    this.http.delete<Tarefa>(`${this.apiURL}/api/delete/${id}`).subscribe(
-      resultado => {
+    const indice = this.arrayDeTarefas.indexOf(tarefaAserRemovida);
+    const id = this.arrayDeTarefas[indice]._id;
+    const idToken = new HttpHeaders().set("id-token", JSON.parse(this.tokenJWT).token);
+    this.http.delete<Tarefa>(`${this.apiURL}/api/delete/${id}`, { headers: idToken }).subscribe(
+      (resultado) => {
         console.log(resultado);
         this.READ_tarefas();
         localStorage.setItem('tasks', JSON.stringify(this.arrayDeTarefas));
@@ -62,15 +63,24 @@ export class AppComponent implements OnInit {
   }
 
   UPDATE_tarefa(tarefaAserModificada: Tarefa) {
-    var indice = this.arrayDeTarefas.indexOf(tarefaAserModificada);
-    var id = this.arrayDeTarefas[indice]._id;
-    this.http.patch<Tarefa>(`${this.apiURL}/api/update/${id}`,
-      tarefaAserModificada).subscribe(
-        resultado => {
-          console.log(resultado);
-          this.READ_tarefas();
-          localStorage.setItem('tasks', JSON.stringify(this.arrayDeTarefas));
-        }
-      );
+    const indice = this.arrayDeTarefas.indexOf(tarefaAserModificada);
+    const id = this.arrayDeTarefas[indice]._id;
+    const idToken = new HttpHeaders().set("id-token", JSON.parse(this.tokenJWT).token);
+    this.http.patch<Tarefa>(`${this.apiURL}/api/update/${id}`, tarefaAserModificada, { headers: idToken }).subscribe(
+      (resultado) => {
+        console.log(resultado);
+        this.READ_tarefas();
+        localStorage.setItem('tasks', JSON.stringify(this.arrayDeTarefas));
+      }
+    );
+  }
+
+  login(username: string, password: string) {
+    var credenciais = { "nome": username, "senha": password }
+    this.http.post(`${this.apiURL}/api/login`, credenciais).subscribe(resultado => {
+      this.tokenJWT = JSON.stringify(resultado);
+      this.nomeUsuario = username; // Atribui o nome de usuário digitado à variável nomeUsuario
+      this.READ_tarefas(); // Chama a função READ_tarefas após o login
+    });
   }
 }

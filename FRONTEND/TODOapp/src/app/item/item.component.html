@@ -7,8 +7,7 @@
         <button class="btn btn-warn" (click)="removeTarefa.emit()">Remove</button>
     </div>
     <div *ngIf="emEdicao">
-        <input class="sm-text-input" #editedItem placeholder="Escreva o novo nome da tarefa 
-   aqui" [value]="tarefa.descricao"
+        <input class="sm-text-input" #editedItem placeholder="Edit" [value]="tarefa.descricao"
             (keydown.enter)="tarefa.descricao=editedItem.value; emEdicao = false; modificaTarefa.emit()">>
         <div class="btn-wrapper">
             <button class="btn btn-cancel" (click)="emEdicao = false ">Cancel</button>
