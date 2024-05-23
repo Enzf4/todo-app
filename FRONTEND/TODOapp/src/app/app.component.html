@@ -1,4 +1,7 @@
 <div class="main">
+  <audio autoplay loop [volume]="0.3" preload="auto">
+    <source src="../assets/antent - hope to see you again - dreamscape.mp3" type="audio/mpeg">
+  </audio>
   <div *ngIf="usuarioLogado">
     <h1 id="title">task_list</h1>
     <h1 id="hello">hello, {{ nomeUsuario }}</h1>
@@ -30,7 +33,4 @@
   </div>
   <h1 id="made">song: antent - hope to see you again</h1>
   <h1 id="made">made by /Enzf4</h1>
-  <audio autoplay loop [volume]="0.3">
-    <source src="../assets/antent - hope to see you again - dreamscape.mp3" type="audio/mpeg">
-</audio>
 </div>

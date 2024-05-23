@@ -16,60 +16,9 @@
     background: aliceblue;
 }
 
-
 body {
     background-color: #0a0a0a;
     color: aliceblue;
-}
-
-audio {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    display: block;
-    background-color: #0a0a0a;
-    border: 2px solid aliceblue;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-audio::-webkit-media-controls-panel {
-    background-color: transparent;
-    color: transparent;
-    background-color: #0a0a0a;
-}
-
-audio::-webkit-media-controls-play-button{
-    color: aliceblue;
-    background-color: #0a0a0a;
-    
-}
-audio::-webkit-media-controls-mute-button{
-    color: aliceblue;
-}
-audio::-webkit-media-controls-volume-slider{
-    background-color: #0a0a0a;
-}
-audio::-webkit-media-controls-timeline {
-    background-color: #0a0a0a;
-    color: aliceblue;
-}
-
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display,
-audio::-webkit-media-controls-seek-back-button,
-audio::-webkit-media-controls-seek-forward-button,
-audio::-webkit-media-controls-fullscreen-button,
-audio::-webkit-media-controls-rewind-button,
-audio::-webkit-media-controls-return-to-realtime-button,
-audio::-webkit-media-controls-toggle-closed-captions-button {
-    color: aliceblue;
-    background-color: #0a0a0a;
-}
-
-audio::-webkit-media-controls-volume-slider-container,
-audio::-webkit-media-controls-timeline-container {
-    background-color: #0a0a0a;
 }
 
 .btn-wrapper {
